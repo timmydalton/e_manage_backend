@@ -4,10 +4,13 @@ var router = express.Router();
 const user = require('../models/user')
 
 /* GET home page. */
-router.get('/',  (req, res) => { 
+router.get('/login',  (req, res) => { 
   user.list().then(result => {
     console.log(result)
-    res.send(result)
+    return res.send(result)
   })
 });
+
+router.use(express.json)
+
 module.exports = router;
